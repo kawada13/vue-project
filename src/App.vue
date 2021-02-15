@@ -6,6 +6,27 @@
     </div>
     <router-view/>
     {{$store.state.count}}
+    <hr>
+    <ul>
+      <li v-for="user in visibleUsers" :key="user.id">
+        {{user.id}}：{{user.name}}：{{user.isvisible}}
+      </li>
+    </ul>
+    <hr>
+    {{getUsersId}}
   </div>
 </template>
+
+<script>
+export default {
+  computed: {
+    visibleUsers() {
+      return this.$store.getters.visibleUsers
+    },
+    getUsersId() {
+      return this.$store.getters.getUsersId(2)
+    }
+  }
+}
+</script>
 
